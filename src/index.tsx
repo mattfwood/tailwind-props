@@ -1,7 +1,7 @@
 import React from 'react';
 import { COLOR_NAMES } from './colorNames';
 
-import './styles.css';
+// import './styles.css';
 import { forwardRefWithAs } from './utils';
 
 type Color = typeof COLOR_NAMES[number];

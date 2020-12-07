@@ -24,10 +24,23 @@ const Card = () => (
 yarn install tailwind-props
 # or
 npm install tailwind-props
+
+# Then install Tailwind dependencies, following these directions if needed:
+# https://tailwindcss.com/docs/installation
+yarn install tailwindcss
 ```
 
 ### Usage
+```css
+/* ./styles/index.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+
 ```jsx
+// in the root of your app, import your Tailwind styles:
+import '../styles/index.css';
 import { Box } from 'tailwind-props';
 
 const NavItem = ({ children }) => (
