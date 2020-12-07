@@ -45,9 +45,12 @@ export interface TailwindProps extends DisplayProps, PositionProps {
   h?: number;
   /** Utilities for controlling the font size of an element. @see Docs https://tailwindcss.com/docs/font-size */
   text?: SizeUnits | 'left' | 'right' | 'center' | 'justify'
+  border?: number;
   /** Utilities for controlling the text color of an element. @see Docs https://tailwindcss.com/docs/text-color*/
   textColor?: Color;
   bg?: Color;
+  rounded?: SizeUnits | boolean;
+  font: 'mono' | 'sans' | 'serif'
 }
 
 export interface Props extends HTMLAttributes<HTMLDivElement>, TailwindProps {
@@ -60,6 +63,7 @@ const SIZE_UNITS = ['text'];
 // since props with the same name override each other, we need to map custom prop names to the correct Tailwind utilities
 const OVERRIDES = {
   textColor: 'text',
+  // fontFamily: 'font',
 } as const;
 
 const useTailwindProps = (props?: TailwindProps): string => {
@@ -95,7 +99,7 @@ const useTailwindProps = (props?: TailwindProps): string => {
  */
 export const Box: FC<Props> = ({ children, ...props }) => {
   const className = useTailwindProps(props);
-  return <div className={className}>{children || `the snozzberries taste like snozzberries`}</div>;
+  return <div className={className}>{children}</div>;
 };
 
 export const Flex: FC<Props> = ({ children, ...props }) => {
