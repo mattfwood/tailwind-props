@@ -4,7 +4,7 @@ import { Box, Flex, Props } from '../src';
 
 const meta: Meta = {
   title: 'Layout Components',
-  component: Box,
+  component: Flex,
   argTypes: {
     children: {
       control: {
@@ -19,12 +19,14 @@ const meta: Meta = {
 
 export default meta;
 
-const Template: Story<Props> = args => <Flex children="This is an example component" {...args} />;
+const Template: Story<Props> = args => (
+  <Flex children="This is an example component" {...args} />
+);
 
 // By passing using the Args format for exported stories, you can control the props for a component for reuse in a test
 // https://storybook.js.org/docs/react/workflows/unit-testing
 export const Default = Template.bind({});
 
 Default.args = {
-  children: 'This is a flex component'
-}
+  children: 'This is a flex component',
+};

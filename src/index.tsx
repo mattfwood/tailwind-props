@@ -21,6 +21,9 @@ export type SizeUnits =
   | '8xl'
   | '9xl';
 
+/**
+ * @see https://tailwindcss.com/docs/font-weight
+ */
 export type FontWeights =
   | 'thin'
   | 'extralight'
@@ -30,7 +33,7 @@ export type FontWeights =
   | 'semibold'
   | 'bold'
   | 'extrabold'
-  | 'black'
+  | 'black';
 
 /**
  * @see https://tailwindcss.com/docs/display
@@ -47,7 +50,8 @@ export type DisplayProps = {
     | 'col-reverse'
     | 'wrap-reverse'
     | 'wrap'
-    | 'nowrap';
+    | 'nowrap'
+    | 'none';
   inlineFlex?: boolean;
   table?: boolean;
   grid?: boolean;
@@ -88,12 +92,14 @@ export interface TailwindProps extends DisplayProps, PositionProps {
   m?: number;
   w?: number;
   h?: number;
+  maxW?: SizeUnits;
+  maxH?: SizeUnits;
   /** Utilities for controlling the font size of an element. @see Docs https://tailwindcss.com/docs/font-size */
   text?: SizeUnits | 'left' | 'right' | 'center' | 'justify';
   border?: number;
   /** Utilities for controlling the text color of an element. @see Docs https://tailwindcss.com/docs/text-color*/
   textColor?: Color;
-  fontWeight?: FontWeights
+  fontWeight?: FontWeights;
   bg?: Color;
   rounded?: SizeUnits | boolean;
   font?: 'mono' | 'sans' | 'serif';
@@ -108,8 +114,7 @@ const OVERRIDES = {
   fontWeight: 'font',
 } as const;
 
-const useTailwindProps = (props?: TailwindProps): string => {
-  console.log(props);
+export const useTailwindProps = (props?: TailwindProps): string => {
   if (!props) {
     return '';
   }
