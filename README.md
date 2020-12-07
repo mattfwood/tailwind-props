@@ -19,7 +19,8 @@ const Card = () => (
 ## Goals
 - Shorten syntax for using tailwind utility classes
 - Allow for easily composability
-- Keep advantages of purging unused CSS
+- Leverage Typescript types as much as possible for props
+- TODO: Keep advantages of purging unused CSS
 
 ## TO DO:
 
