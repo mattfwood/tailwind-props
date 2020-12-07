@@ -19,9 +19,9 @@ const Card = () => (
 ## Get Started
 
 ```bash
-yarn install
+yarn install tailwind-props
 # or
-npm install
+npm install tailwind-props
 ```
 
 ### Usage
