@@ -50,7 +50,7 @@ export interface TailwindProps extends DisplayProps, PositionProps {
   textColor?: Color;
   bg?: Color;
   rounded?: SizeUnits | boolean;
-  font: 'mono' | 'sans' | 'serif'
+  font?: 'mono' | 'sans' | 'serif'
 }
 
 export interface Props extends HTMLAttributes<HTMLDivElement>, TailwindProps {

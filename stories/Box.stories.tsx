@@ -35,10 +35,6 @@ export const Padding = () => (
     </Box>
   </Box>
 )
-// Padding.args = {
-//   children: 'Padding',
-//   p: 5
-// }
 
 export const Background = Template.bind({});
 Background.args = {
