@@ -54,3 +54,22 @@ const Example = () => (
   <Box flex flexDirection="row" flexWrap="wrap">Title</Box>
 )
 ```
+
+### Remaining Props:
+- [ ] Alignment (justify-content, align-items)
+- [ ] Font Family
+- [ ] Font Weight
+- [ ] Text Align
+- [ ] Text Transform
+- [ ] Color Utilities
+- [ ] Text Color
+- [ ] Background Color
+- [ ] Border Width
+- [ ] Border Color
+- [ ] Border Radius
+- [ ] Box Shadow
+- [ ] Cursor
+
+- [ ] Container
+
+### Create custom PurgeCSS Extractor to optimize for production
