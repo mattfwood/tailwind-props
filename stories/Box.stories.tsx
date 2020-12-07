@@ -19,15 +19,25 @@ const meta: Meta = {
 
 export default meta;
 
-const Template: Story<Props> = args => <Box flex="row" flex="wrap" {...args} />;
+const Template: Story<Props> = args => <Box {...args} />;
 
 // By passing using the Args format for exported stories, you can control the props for a component for reuse in a test
 // https://storybook.js.org/docs/react/workflows/unit-testing
 export const Default = Template.bind({});
 
 Default.args = {
-  p: 1,
-  // flex: true,
+}
+
+export const Background = Template.bind({});
+
+Background.args = {
+  bg: 'red-500'
+}
+
+export const TextColor = Template.bind({});
+
+TextColor.args = {
+  textColor: 'blue-500'
 }
 
 // export const Basic = props => <Box p={1} {...props} />

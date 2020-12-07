@@ -56,14 +56,14 @@ const Example = () => (
 ```
 
 ### Remaining Props:
+- [X] Color Utilities
+- [X] Text Color
+- [X] Background Color
 - [ ] Alignment (justify-content, align-items)
 - [ ] Font Family
 - [ ] Font Weight
 - [ ] Text Align
 - [ ] Text Transform
-- [ ] Color Utilities
-- [ ] Text Color
-- [ ] Background Color
 - [ ] Border Width
 - [ ] Border Color
 - [ ] Border Radius
