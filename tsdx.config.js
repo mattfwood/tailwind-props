@@ -1,5 +1,14 @@
 const postcss = require('rollup-plugin-postcss');
 const autoprefixer = require('autoprefixer');
+// const purgecss = require('@fullhuman/postcss-purgecss')
+
+// PURGE REGEX
+// [A-Za-z0-9_-]+=[{"].*[}"]
+
+// const purgeFromTailwindProps = (content) => {
+//   console.log(content);
+//   return []
+// }
 
 module.exports = {
   rollup(config, options) {
@@ -8,6 +17,23 @@ module.exports = {
         plugins: [
           require('tailwindcss'),
           require('autoprefixer'),
+          // purgecss({
+          //  content: [
+          //     './src/**/*.html',
+          //     './src/**/*.js',
+          //     './src/**/*.jsx',
+          //     './src/**/*.ts',
+          //     './src/**/*.tsx',
+          //   ],
+          //   options: {
+          //     extractors: [
+          //       {
+          //         extractor: purgeFromTailwindProps,
+          //         extensions: ['js', 'jsx', 'tsx']
+          //       },
+          //     ],
+          //   }
+          // })
         ]
         // inject: false,
         // only write out CSS for the first bundle (avoids pointless extra files):
