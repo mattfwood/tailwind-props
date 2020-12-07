@@ -1,11 +1,13 @@
 import colors from 'tailwindcss/colors';
 
+// @ts-ignore
 const getColorNames: string[] = Object.entries(colors as any)
   .map(([key, value]) => {
     if (typeof value === 'string') {
       return key;
     }
 
+    // @ts-ignore
     const colorVariants = Object.keys(value).map(colorValue => {
       return `${key}-${colorValue}`;
     });

@@ -50,6 +50,19 @@ TextColor.args = {
   textColor: 'blue-500'
 }
 
+export const FontFamily = Template.bind({});
+FontFamily.args = {
+  children: 'font="serif"',
+  font: 'serif'
+}
+
+export const FontWeight = Template.bind({});
+FontWeight.args = {
+  children: 'fontWeight="extrabold"',
+  font: 'sans',
+  fontWeight: 'extrabold'
+}
+
 // <button class="w-1/2 flex items-center justify-center rounded-md bg-black text-white" type="submit">Buy now</button>
 // <button type="button" class="bg-violet-100 text-violet-700 text-base font-semibold px-6 py-2 rounded-lg">Check availability</button>
 

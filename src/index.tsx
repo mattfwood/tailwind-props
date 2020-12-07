@@ -21,6 +21,17 @@ export type SizeUnits =
   | '8xl'
   | '9xl';
 
+export type FontWeights =
+  | 'thin'
+  | 'extralight'
+  | 'light'
+  | 'normal'
+  | 'medium'
+  | 'semibold'
+  | 'bold'
+  | 'extrabold'
+  | 'black'
+
 /**
  * @see https://tailwindcss.com/docs/display
  */
@@ -82,14 +93,10 @@ export interface TailwindProps extends DisplayProps, PositionProps {
   border?: number;
   /** Utilities for controlling the text color of an element. @see Docs https://tailwindcss.com/docs/text-color*/
   textColor?: Color;
+  fontWeight?: FontWeights
   bg?: Color;
   rounded?: SizeUnits | boolean;
   font?: 'mono' | 'sans' | 'serif';
-}
-
-export interface Props extends TailwindProps {
-  children?: React.ReactNode;
-  as?: string;
 }
 
 const SPACING_UNITS = ['p', 'm', 'w', 'h'];
@@ -98,7 +105,7 @@ const SIZE_UNITS = ['text'];
 // since props with the same name override each other, we need to map custom prop names to the correct Tailwind utilities
 const OVERRIDES = {
   textColor: 'text',
-  // fontFamily: 'font',
+  fontWeight: 'font',
 } as const;
 
 const useTailwindProps = (props?: TailwindProps): string => {
@@ -128,16 +135,15 @@ const useTailwindProps = (props?: TailwindProps): string => {
   return className;
 };
 
+export interface Props extends TailwindProps {
+  children?: React.ReactNode;
+}
+
 // Please do not use types off of a default export module or else Storybook Docs will suffer.
 // see: https://github.com/storybookjs/storybook/issues/9556
 /**
  * A base Box component to replace a `<div />`
  */
-// export const Box: FC<Props> = ({ children, as: Component = 'div', ...props }) => {
-//   const className = useTailwindProps(props);
-//   return <Component className={className} {...props}>{children}</Component>;
-// };
-
 export const Box = forwardRefWithAs<Props, 'div'>(function Box(
   { children, as: Component = 'div', ...props },
   forwardedRef

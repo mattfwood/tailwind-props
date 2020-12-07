@@ -85,8 +85,8 @@ const Example = () => (
 - [X] Color Utilities
 - [X] Text Color
 - [X] Background Color
+- [X] Font Family
 - [ ] Alignment (justify-content, align-items)
-- [ ] Font Family
 - [ ] Font Weight
 - [ ] Text Align
 - [ ] Text Transform
