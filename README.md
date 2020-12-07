@@ -16,6 +16,31 @@ const Card = () => (
 )
 ```
 
+## Get Started
+
+```bash
+yarn install
+# or
+npm install
+```
+
+### Usage
+```jsx
+import { Box } from 'tailwind-props';
+
+const NavItem = ({ children }) => (
+  <Box block px={4} py={2} rounded="md" bg="amber-100" text="amber-700">
+    {children}
+  </Box>
+)
+
+const MenuButton = ({ children }) => (
+  <Box as="button" font="sans" rounded="lg" bg="purple-100" textColor="purple-700" px={6} py={2}>
+    Check Availability
+  </Box>
+)
+```
+
 ## Goals
 - Shorten syntax for using tailwind utility classes
 - Allow for easily composability

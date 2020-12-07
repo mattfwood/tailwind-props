@@ -3,7 +3,7 @@ import { Meta, Story } from '@storybook/react';
 import { Box, Props } from '../src';
 
 const meta: Meta = {
-  title: 'Box',
+  title: 'Basic Props',
   component: Box,
   argTypes: {
     children: {
@@ -48,6 +48,21 @@ export const TextColor = Template.bind({});
 TextColor.args = {
   children: 'blue-500',
   textColor: 'blue-500'
+}
+
+// <button class="w-1/2 flex items-center justify-center rounded-md bg-black text-white" type="submit">Buy now</button>
+// <button type="button" class="bg-violet-100 text-violet-700 text-base font-semibold px-6 py-2 rounded-lg">Check availability</button>
+
+export const AsProp = Template.bind({});
+AsProp.args = {
+  as: 'button',
+  font: 'sans',
+  rounded: 'lg',
+  bg: 'purple-100',
+  textColor: 'purple-700',
+  px: 6,
+  py: 2,
+  children: 'Check Availability',
 }
 
 // export const Basic = props => <Box p={1} {...props} />
