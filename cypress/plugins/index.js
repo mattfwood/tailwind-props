@@ -14,13 +14,13 @@
 
 const browserify = require('@cypress/browserify-preprocessor');
 
-const preprocessor = require('cypress-react-unit-test/plugins/react-scripts')
+const preprocessor = require('cypress-react-unit-test/plugins/react-scripts');
 
 /**
  * @type {Cypress.PluginConfig}
  */
 module.exports = (on, config) => {
-  preprocessor(on, config)
+  preprocessor(on, config);
 
   on(
     'file:preprocessor',
@@ -29,9 +29,8 @@ module.exports = (on, config) => {
     })
   );
 
-
   // `on` is used to hook into various events Cypress emits
   // `config` is the resolved Cypress config
 
-  return config
-}
+  return config;
+};

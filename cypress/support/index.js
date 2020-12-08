@@ -13,10 +13,9 @@
 // ***********************************************************
 
 // Import commands.js using ES2015 syntax:
-import './commands'
+import './commands';
 
-require('cypress-react-unit-test/support')
-
+require('cypress-react-unit-test/support');
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')

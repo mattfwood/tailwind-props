@@ -1,6 +1,6 @@
 import * as React from "react";
 // import fbWarning from "warning";
-import type {
+import {
   As,
   AssignableRef,
   ComponentWithAs,
@@ -51,7 +51,7 @@ export const useIsomorphicLayoutEffect = canUseDOM()
   ? React.useLayoutEffect
   : React.useEffect;
 
-let checkedPkgs: { [key: string]: boolean } = {};
+// let checkedPkgs: { [key: string]: boolean } = {};
 
 /**
  * Copy of Facebook's warning package.
@@ -73,40 +73,40 @@ let checkedPkgs: { [key: string]: boolean } = {};
  */
 let checkStyles: (packageName: string) => void = noop;
 
-if (__DEV__) {
-  // In CJS files, process.env.NODE_ENV is stripped from our build, but we need
-  // it to prevent style checks from clogging up user logs while testing.
-  // This is a workaround until we can tweak the build a bit to accommodate.
-  let { env } =
-    typeof process !== "undefined"
-      ? process
-      : { env: { NODE_ENV: "development" } };
+// if (__DEV__) {
+//   // In CJS files, process.env.NODE_ENV is stripped from our build, but we need
+//   // it to prevent style checks from clogging up user logs while testing.
+//   // This is a workaround until we can tweak the build a bit to accommodate.
+//   let { env } =
+//     typeof process !== "undefined"
+//       ? process
+//       : { env: { NODE_ENV: "development" } };
 
-  checkStyles = function checkStyles(packageName: string) {
-    // only check once per package
-    if (checkedPkgs[packageName]) return;
-    checkedPkgs[packageName] = true;
+//   checkStyles = function checkStyles(packageName: string) {
+//     // only check once per package
+//     if (checkedPkgs[packageName]) return;
+//     checkedPkgs[packageName] = true;
 
-    if (
-      env.NODE_ENV !== "test" &&
-      parseInt(
-        window
-          .getComputedStyle(document.body)
-          .getPropertyValue(`--reach-${packageName}`),
-        10
-      ) !== 1
-    ) {
-      console.warn(
-        `@reach/${packageName} styles not found. If you are using a bundler like webpack or parcel include this in the entry file of your app before any of your own styles:
-    import "@reach/${packageName}/styles.css";
-  Otherwise you'll need to include them some other way:
-    <link rel="stylesheet" type="text/css" href="node_modules/@reach/${packageName}/styles.css" />
-  For more information visit https://ui.reach.tech/styling.
-  `
-      );
-    }
-  };
-}
+//     if (
+//       env.NODE_ENV !== "test" &&
+//       parseInt(
+//         window
+//           .getComputedStyle(document.body)
+//           .getPropertyValue(`--reach-${packageName}`),
+//         10
+//       ) !== 1
+//     ) {
+//       console.warn(
+//         `@reach/${packageName} styles not found. If you are using a bundler like webpack or parcel include this in the entry file of your app before any of your own styles:
+//     import "@reach/${packageName}/styles.css";
+//   Otherwise you'll need to include them some other way:
+//     <link rel="stylesheet" type="text/css" href="node_modules/@reach/${packageName}/styles.css" />
+//   For more information visit https://ui.reach.tech/styling.
+//   `
+//       );
+//     }
+//   };
+// }
 
 export { checkStyles };
 

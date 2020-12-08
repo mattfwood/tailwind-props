@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
-import { Box, Flex, Props } from '../src';
+import { Flex, Props } from '../src';
 
 const meta: Meta = {
   title: 'Layout Components',
