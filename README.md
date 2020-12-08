@@ -63,6 +63,7 @@ const MenuButton = ({ children }) => (
 - TODO: Keep advantages of purging unused CSS
 
 ## TO DO:
+#### (From Highest to Lowest Priority)
 
 ### Figure out how to resolve overlapping utility prop names
 
