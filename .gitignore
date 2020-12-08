@@ -3,5 +3,10 @@
 node_modules
 .cache
 dist
+coverage
+.nyc_output
+
+cypress/videos
+cypress/screenshots
 
 storybook-static/
