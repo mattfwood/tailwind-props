@@ -13,7 +13,7 @@
   "scripts": {
     "start": "tsdx watch",
     "build": "tsdx build",
-    "test": "tsdx test --passWithNoTests",
+    "test": "cypress run",
     "lint": "tsdx lint src test stories cypress",
     "prepare": "tsdx build",
     "size": "size-limit",
