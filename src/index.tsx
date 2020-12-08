@@ -1,25 +1,9 @@
 import React from 'react';
 import { COLOR_NAMES } from './colorNames';
+import { SizeUnits, Colors } from './types';
 
 // import './styles.css';
 import { forwardRefWithAs } from './utils';
-
-type Color = typeof COLOR_NAMES[number];
-
-export type SizeUnits =
-  | 'xs'
-  | 'sm'
-  | 'base'
-  | 'lg'
-  | 'xl'
-  | '2xl'
-  | '3xl'
-  | '4xl'
-  | '5xl'
-  | '6xl'
-  | '7xl'
-  | '8xl'
-  | '9xl';
 
 /**
  * @see https://tailwindcss.com/docs/font-weight
