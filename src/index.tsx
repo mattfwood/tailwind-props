@@ -1,7 +1,6 @@
 import React from 'react';
 import { SizeUnits, Color } from './types';
 
-// import './styles.css';
 import { forwardRefWithAs } from './utils';
 
 /**
