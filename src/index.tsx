@@ -1,5 +1,4 @@
 import React from 'react';
-import { COLOR_NAMES } from './colorNames';
 import { SizeUnits, Color } from './types';
 
 // import './styles.css';
