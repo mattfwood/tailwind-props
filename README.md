@@ -65,6 +65,8 @@ const MenuButton = ({ children }) => (
 ## TO DO:
 #### (From Highest to Lowest Priority)
 
+### Pass down all props, but filter out tailwind props
+
 ### Figure out how to resolve overlapping utility prop names
 
 In tailwind, this is valid:

@@ -1,6 +1,6 @@
 import React from 'react';
 import { COLOR_NAMES } from './colorNames';
-import { SizeUnits, Colors } from './types';
+import { SizeUnits, Color } from './types';
 
 // import './styles.css';
 import { forwardRefWithAs } from './utils';
@@ -92,6 +92,11 @@ export interface TailwindProps extends DisplayProps, PositionProps {
 
 const SPACING_UNITS = ['p', 'm', 'w', 'h'];
 const SIZE_UNITS = ['text'];
+const COLOR_PROPS = ['bg'];
+const FONT_PROPS = ['font'];
+const BORDER_PROPS = ['rounded']
+
+export const TAILWIND_PROPS = [...SPACING_UNITS, ...SIZE_UNITS, ...COLOR_PROPS, ...FONT_PROPS, ...BORDER_PROPS]
 
 // since props with the same name override each other, we need to map custom prop names to the correct Tailwind utilities
 const OVERRIDES = {
@@ -100,30 +105,32 @@ const OVERRIDES = {
   fontWeight: 'font',
 } as const;
 
-export const useTailwindProps = (props?: TailwindProps): string => {
+export const useTailwindProps = (props?: TailwindProps): [string, any] => {
   if (!props) {
-    return '';
+    return ['', {}];
   }
 
   const classes: string[] = [];
+  let excludedProps: any = {};
 
   Object.entries(props).forEach(([key, value]) => {
     const formattedKey = camelToKebabCase(key);
     if (typeof value === 'boolean') {
       classes.push(formattedKey);
-    } else if ([...SPACING_UNITS, ...SIZE_UNITS].includes(key)) {
+    } else if (TAILWIND_PROPS.includes(key)) {
       classes.push([formattedKey, value].join('-'));
     } else if (Object.keys(OVERRIDES).includes(key)) {
       // @ts-ignore
       classes.push([OVERRIDES[key], value].join('-'));
     } else {
-      classes.push([formattedKey, value].join('-'));
+      // if the prop isn't one that we've listed, append it to the excluded props to pass down to the element
+      excludedProps = { ...excludedProps, [key]: value }
     }
   });
 
   const className = classes.join(' ');
 
-  return className;
+  return [className, excludedProps];
 };
 
 export interface Props extends TailwindProps {
@@ -139,11 +146,12 @@ export const Box = forwardRefWithAs<Props, 'div'>(function Box(
   { children, as: Component = 'div', ...props },
   forwardedRef
 ) {
-  const className = useTailwindProps(props);
+  const [className, excludedProps] = useTailwindProps(props);
   return (
     <Component
       ref={forwardedRef}
       className={className}
+      {...excludedProps}
       // {...props} @TODO: Figure out how to filter out tailwind props
     >
       {children}
