@@ -102,8 +102,8 @@ const Example = () => (
 - [X] Background Color
 - [X] Font Family
 - [X] Font Weight
+- [x] Text Align
 - [ ] Alignment (justify-content, align-items)
-- [ ] Text Align
 - [ ] Text Transform
 - [ ] Border Width
 - [ ] Border Color

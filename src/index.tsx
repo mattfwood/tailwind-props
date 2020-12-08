@@ -95,10 +95,11 @@ export interface TailwindProps extends DisplayProps, PositionProps {
   maxW?: SizeUnits;
   maxH?: SizeUnits;
   /** Utilities for controlling the font size of an element. @see Docs https://tailwindcss.com/docs/font-size */
-  text?: SizeUnits | 'left' | 'right' | 'center' | 'justify';
+  text?: SizeUnits;
   border?: number;
   /** Utilities for controlling the text color of an element. @see Docs https://tailwindcss.com/docs/text-color*/
   textColor?: Color;
+  textAlign?: 'left' | 'right' | 'center' | 'justify' | string;
   fontWeight?: FontWeights;
   bg?: Color;
   rounded?: SizeUnits | boolean;
@@ -111,6 +112,7 @@ const SIZE_UNITS = ['text'];
 // since props with the same name override each other, we need to map custom prop names to the correct Tailwind utilities
 const OVERRIDES = {
   textColor: 'text',
+  textAlign: 'text',
   fontWeight: 'font',
 } as const;
 
