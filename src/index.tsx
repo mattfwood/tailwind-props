@@ -3,24 +3,40 @@ import { SizeUnits, Color } from './types';
 
 import { forwardRefWithAs } from './utils';
 
+export enum FontWeightValues {
+  'thin' = 'thin',
+  'extralight' = 'extralight',
+  'light' = 'light',
+  'normal' = 'normal',
+  'medium' = 'medium',
+  'semibold' = 'semibold',
+  'bold' = 'bold',
+  'extrabold' = 'extrabold',
+  'black' = 'black',
+}
+
 /**
  * @see https://tailwindcss.com/docs/font-weight
  */
-export type FontWeights =
-  | 'thin'
-  | 'extralight'
-  | 'light'
-  | 'normal'
-  | 'medium'
-  | 'semibold'
-  | 'bold'
-  | 'extrabold'
-  | 'black';
+export type FontWeight = keyof typeof FontWeightValues
+
+// export type FontWeight =
+//   | 'thin'
+//   | 'extralight'
+//   | 'light'
+//   | 'normal'
+//   | 'medium'
+//   | 'semibold'
+//   | 'bold'
+//   | 'extrabold'
+//   | 'black';
+
+export type OverflowValue = 'auto' | 'hidden' | 'visible' | 'scroll'
 
 /**
  * @see https://tailwindcss.com/docs/display
  */
-export type DisplayProps = {
+export type LayoutProps = {
   block?: boolean;
   inlineBlock?: boolean;
   inline?: boolean;
@@ -38,7 +54,15 @@ export type DisplayProps = {
   table?: boolean;
   grid?: boolean;
   hidden?: boolean;
+  overflow?: OverflowValue;
+  overflowX?: OverflowValue;
+  overflowY?: OverflowValue;
 };
+
+export type AlignmentProps = {
+  justify?: | 'start' | 'center' | 'end' | 'space-between' | 'space-around' | 'space-evenly' | string
+  items?: 'stretch' | 'start' | 'center' | 'end' | 'baseline' | string
+}
 
 /**
  * @see https://tailwindcss.com/docs/display
@@ -51,6 +75,8 @@ export type PositionProps = {
   sticky?: boolean;
 };
 
+// export type SpacingProps
+
 /**
  * @see https://tailwindcss.com/docs/customizing-spacing
  */
@@ -60,7 +86,7 @@ const camelToKebabCase = (string: string): string => {
   return string.replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, '$1-$2').toLowerCase();
 };
 
-export interface TailwindProps extends DisplayProps, PositionProps {
+export interface TailwindProps extends LayoutProps, PositionProps, AlignmentProps {
   /** Utilities for controlling an element's padding. @see Docs https://tailwindcss.com/docs/padding */
   p?: SpacingValues;
   /** Utilities for controlling an element's left and right padding. @see Docs https://tailwindcss.com/docs/padding */
@@ -100,25 +126,29 @@ export interface TailwindProps extends DisplayProps, PositionProps {
   /** Utilities for controlling the text color of an element. @see Docs https://tailwindcss.com/docs/text-color*/
   textColor?: Color;
   textAlign?: 'left' | 'right' | 'center' | 'justify' | string;
-  fontWeight?: FontWeights;
+  fontWeight?: FontWeight;
   bg?: Color;
+  shadow?: SizeUnits | boolean | 'inner' | 'none';
   rounded?: SizeUnits | boolean;
   font?: 'mono' | 'sans' | 'serif';
 }
 
-const SPACING_UNITS = ['p', 'm', 'w', 'h'];
+const SPACING_UNITS = ['p', 'm', 'w', 'h', 'px', 'py', 'pt', 'pb', 'pl', 'pr', 'mx', 'my', 'mt', 'mr', 'mb','ml'];
 const SIZE_UNITS = ['text'];
 const COLOR_PROPS = ['bg'];
 const FONT_PROPS = ['font'];
-const BORDER_PROPS = ['rounded']
+const BORDER_PROPS = ['rounded', 'shadow']
+const ALIGNMENT_PROPS = ['justify', 'items']
+const LAYOUT_PROPS = ['flexDirection', 'overflow', 'overflowX', 'overflowY']
 
-export const TAILWIND_PROPS = [...SPACING_UNITS, ...SIZE_UNITS, ...COLOR_PROPS, ...FONT_PROPS, ...BORDER_PROPS]
+export const TAILWIND_PROPS = [...SPACING_UNITS, ...SIZE_UNITS, ...COLOR_PROPS, ...FONT_PROPS, ...BORDER_PROPS, ...ALIGNMENT_PROPS, ...LAYOUT_PROPS]
 
 // since props with the same name override each other, we need to map custom prop names to the correct Tailwind utilities
 const OVERRIDES = {
   textColor: 'text',
   textAlign: 'text',
   fontWeight: 'font',
+  flexDirection: 'flex',
 } as const;
 
 export const useTailwindProps = (props?: TailwindProps): [string, any] => {

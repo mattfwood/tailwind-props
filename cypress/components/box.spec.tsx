@@ -53,6 +53,48 @@ describe('<Box />', () => {
       .should('have.css', 'font-weight', '700');
   });
 
+  it('renders flex properties', () => {
+    mount(
+      <div>
+        <link
+          href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+          rel="stylesheet"
+        />
+        <Box
+          flex
+          flexDirection="reverse"
+          id="box"
+          h={4}
+          w={4}
+          justify="center"
+          items="center"
+        >
+          Flex
+        </Box>
+      </div>
+    );
+
+    cy.get('#box')
+      .should('have.css', 'display', 'flex')
+      .should('have.css', 'flex-direction', 'reverse')
+      .should('have.css', 'justify-content', 'center')
+      .should('have.css', 'align-items', 'center');
+  });
+
+  it('accepts an "as" prop', () => {
+    mount(
+      <div>
+        <link
+          href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+          rel="stylesheet"
+        />
+        <Box as="input" p={4} textAlign="center" value="Input" />
+      </div>
+    );
+
+    cy.get('input').should('have.value', 'Input');
+  });
+
   it('accepts an "as" prop', () => {
     mount(
       <div>
