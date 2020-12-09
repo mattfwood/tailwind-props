@@ -51,27 +51,45 @@ export type PositionProps = {
   sticky?: boolean;
 };
 
+/**
+ * @see https://tailwindcss.com/docs/customizing-spacing
+ */
+export type SpacingValues = number | 'auto' | 'px' | string
+
 const camelToKebabCase = (string: string): string => {
   return string.replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, '$1-$2').toLowerCase();
 };
 
 export interface TailwindProps extends DisplayProps, PositionProps {
   /** Utilities for controlling an element's padding. @see Docs https://tailwindcss.com/docs/padding */
-  p?: number;
+  p?: SpacingValues;
   /** Utilities for controlling an element's left and right padding. @see Docs https://tailwindcss.com/docs/padding */
-  px?: number;
+  px?: SpacingValues;
   /** Utilities for controlling an element's top and bottom padding. @see Docs https://tailwindcss.com/docs/padding */
-  py?: number;
+  py?: SpacingValues;
   /** Utilities for controlling an element's top padding. @see Docs https://tailwindcss.com/docs/padding */
-  pt?: number;
+  pt?: SpacingValues;
   /** Utilities for controlling an element's right padding. @see Docs https://tailwindcss.com/docs/padding */
-  pr?: number;
+  pr?: SpacingValues;
   /** Utilities for controlling an element's bottom padding. @see Docs https://tailwindcss.com/docs/padding */
-  pb?: number;
+  pb?: SpacingValues;
   /** Utilities for controlling an element's left padding. @see Docs https://tailwindcss.com/docs/padding */
-  pl?: number;
+  pl?: SpacingValues;
   /** Utilities for controlling an element's margin. @see Docs https://tailwindcss.com/docs/margin */
-  m?: number;
+  m?: SpacingValues;
+  mx?: SpacingValues;
+  /** Utilities for controlling an element's top and bottom margin. @see Docs https://tailwindcss.com/docs/margin */
+  my?: SpacingValues;
+  /** Utilities for controlling an element's top margin. @see Docs https://tailwindcss.com/docs/margin */
+  mt?: SpacingValues;
+  /** Utilities for controlling an element's right margin. @see Docs https://tailwindcss.com/docs/margin */
+  mr?: SpacingValues;
+  /** Utilities for controlling an element's bottom margin. @see Docs https://tailwindcss.com/docs/margin */
+  mb?: SpacingValues;
+  /** Utilities for controlling an element's left margin. @see Docs https://tailwindcss.com/docs/margin */
+  ml?: SpacingValues;
+  /** Utilities for controlling an element's margin. @see Docs https://tailwindcss.com/docs/margin */
+
   w?: number;
   h?: number;
   maxW?: SizeUnits;
