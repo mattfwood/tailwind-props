@@ -27,6 +27,8 @@ describe('<Box />', () => {
           bg="purple-900"
           font="serif"
           fontWeight="bold"
+          border
+          borderColor="red-700"
         >
           {text}
         </Box>
@@ -42,6 +44,8 @@ describe('<Box />', () => {
       .should('have.css', 'width', '384px')
       .should('have.css', 'height', '384px')
       .should('have.css', 'margin', '8px')
+      .should('have.css', 'borderWidth', '1px')
+      .should('have.css', 'borderColor', 'rgb(185, 28, 28)')
       .should('have.css', 'color', 'rgb(196, 181, 253)')
       .should('have.css', 'background-color', 'rgb(76, 29, 149)')
       .should('have.css', 'text-align', 'center')

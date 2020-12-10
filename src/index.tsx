@@ -123,7 +123,8 @@ export interface TailwindProps extends LayoutProps, PositionProps, AlignmentProp
   maxH?: SizeUnits;
   /** Utilities for controlling the font size of an element. @see Docs https://tailwindcss.com/docs/font-size */
   text?: SizeUnits;
-  border?: number;
+  border?: number | boolean;
+  borderColor?: Color | 'current' | 'transparent';
   /** Utilities for controlling the text color of an element. @see Docs https://tailwindcss.com/docs/text-color*/
   textColor?: Color;
   textAlign?: 'left' | 'right' | 'center' | 'justify' | string;
@@ -150,6 +151,7 @@ const OVERRIDES = {
   textAlign: 'text',
   fontWeight: 'font',
   flexDirection: 'flex',
+  borderColor: 'border',
 } as const;
 
 export const useTailwindProps = (props?: TailwindProps): [string, any] => {
