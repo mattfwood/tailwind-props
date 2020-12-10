@@ -56,46 +56,78 @@ const MenuButton = ({ children }) => (
 )
 ```
 
-## Goals
-- Shorten syntax for using tailwind utility classes
-- Allow for easily composability
-- Leverage Typescript types as much as possible for props
-- TODO: Keep advantages of purging unused CSS
+## Why does this exist?
+While TailwindCSS on its own works perfectly well with React, there are a few ways it could be improved to better fit the React model.
+
+<!--ts-->
+   * [Easier Composability](#easier-composability)
+   * [Simplifying Syntax](#simplifying-syntax)
+   * [Typescript](#typescript)
+<!--te-->
+
+### Easier Composability
+The biggest limitation of TailwindCSS on its own is that it relies entirely on strings for an element's `class`.
+
+While you can extract styles within Tailwind, the common React pattern for this is using objects and defaults to compose similar elements.
+
+```jsx
+// default TailwindCSS (without using @apply to extract)
+const BaseButton = ({ className }) => (
+  // string concatenation this way is more fragile than merging objects and will also cause duplicate classNames to be added
+  <button className={`px-5 py-3 rounded-md text-white bg-indigo-600 ${className}`}>
+    Primary Button
+  </button>
+)
+
+const SecondaryButton = () => (
+  <BaseButton className="text-indigo-600 bg-white border border-indigo-600">
+    Secondary Button
+  </BaseButton>
+)
+
+
+// Using Tailwind Props
+const BaseButton = (props) => (
+  // pass down all props to allow additional styles to be merged in
+  <Button px={5} py={3} rounded="md" text="white" bg="indigo-600" {...props}>
+    Primary Button
+  </Button>
+)
+
+const SecondaryButton = () => (
+  // pass down props to override base button styles
+  <BaseButton text="indigo-600" bg="white" border="indigo-600" >
+    Secondary Button
+  </BaseButton>
+)
+
+```
+
+### Simplifying Syntax
+Since we're (currently) stuck typing out `className` in React, it can make tailwind a bit clunkier.
+
+By mapping out Tailwind utilities to props, we can simplify the syntax a good amount:
+
+```jsx
+// vanilla tailwind
+<button className="px-5 py-3 rounded-md">
+  Click Here
+</button>
+// Tailwind Props
+<Button px={5} py={3} rounded="md">
+  Click Here
+</Button>
+```
+
+### Typescript
 
 ## TO DO:
-#### (From Highest to Lowest Priority)
+### (From Highest to Lowest Priority)
 
-### Figure out how to resolve overlapping utility prop names
+### Figure out approach for pseudo classes / states (:hover, :active, :disabled) and responsive styles
 
-In tailwind, this is valid:
-
-```jsx
-const Example = () => (
-  <div className="flex flex-row flex-wrap">Title</div>
-)
-```
-
-However, if we try to map these all to the same "flex" prop in React, the last one will overwrite the others:
-
-```jsx
-const Example = () => (
-  <Box flex flex="row" flex="wrap">Title</Box>
-)
-/**
- * Passes these props, and loses the others:
- * {
- *  flex: 'wrap'
- * }
-*/
-```
-
-Probably will require modifications to these utility names, such as:
-
-```jsx
-const Example = () => (
-  <Box flex flexDirection="row" flexWrap="wrap">Title</Box>
-)
-```
+### Create custom PurgeCSS Extractor to optimize for production
+Will require a custom PurgeCSS extractor / function
 
 ### Remaining Props:
 - [X] Color Utilities
@@ -111,7 +143,4 @@ const Example = () => (
 - [ ] Border Radius
 - [ ] Box Shadow
 - [ ] Cursor
-
 - [ ] Container
-
-### Create custom PurgeCSS Extractor to optimize for production

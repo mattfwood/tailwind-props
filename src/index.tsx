@@ -51,6 +51,7 @@ export type LayoutProps = {
     | 'nowrap'
     | 'none';
   inlineFlex?: boolean;
+  flexDirection?: 'row' | 'row-reverse' | 'column' | 'column-reverse';
   table?: boolean;
   grid?: boolean;
   hidden?: boolean;
@@ -139,7 +140,7 @@ const COLOR_PROPS = ['bg'];
 const FONT_PROPS = ['font'];
 const BORDER_PROPS = ['rounded', 'shadow']
 const ALIGNMENT_PROPS = ['justify', 'items']
-const LAYOUT_PROPS = ['flexDirection', 'overflow', 'overflowX', 'overflowY']
+const LAYOUT_PROPS = ['overflow', 'overflowX', 'overflowY']
 
 export const TAILWIND_PROPS = [...SPACING_UNITS, ...SIZE_UNITS, ...COLOR_PROPS, ...FONT_PROPS, ...BORDER_PROPS, ...ALIGNMENT_PROPS, ...LAYOUT_PROPS]
 

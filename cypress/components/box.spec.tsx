@@ -62,7 +62,7 @@ describe('<Box />', () => {
         />
         <Box
           flex
-          flexDirection="reverse"
+          flexDirection="row-reverse"
           id="box"
           h={4}
           w={4}
@@ -76,7 +76,7 @@ describe('<Box />', () => {
 
     cy.get('#box')
       .should('have.css', 'display', 'flex')
-      .should('have.css', 'flex-direction', 'reverse')
+      .should('have.css', 'flex-direction', 'row-reverse')
       .should('have.css', 'justify-content', 'center')
       .should('have.css', 'align-items', 'center');
   });
